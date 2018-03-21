@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 $:.unshift('/Library/RubyMotion/lib')
+$:.unshift('~/.rubymotion/rubymotion-templates') # Add this line
 require 'motion/project/template/ios'
 
 require 'bundler'

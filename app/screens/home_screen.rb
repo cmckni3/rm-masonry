@@ -1,33 +1,27 @@
 class HomeScreen < PM::Screen
-  title "Your title here"
+  title "Masonry"
   stylesheet HomeScreenStylesheet
 
-  def on_load
-    set_nav_bar_button :left, system_item: :camera, action: :nav_left_button
-    set_nav_bar_button :right, title: "Right", action: :nav_right_button
+  def viewDidLoad
+    super
 
-    @hello_world = append!(UILabel, :hello_world)
+    self.view.backgroundColor = color.white
+
+    # Padding: 50 from top, 50 from left, 10 from bottom, 10 from right
+    padding = UIEdgeInsets.new(50, 50, 10, 10)
+
+    @hello_world = UILabel.new
+    @hello_world.text = 'Hello World'
+    self.view.addSubview @hello_world
+
+    # mas_makeConstraints takes either a stabby lambda or Proc
+    @hello_world.mas_makeConstraints ->(make) {
+      make.top.equalTo(self.view.mas_top).with.offset(padding.top)
+      make.left.equalTo(self.view.mas_left).with.offset(padding.left)
+      make.bottom.equalTo(self.view.mas_bottom).with.offset(-padding.bottom)
+      make.right.equalTo(self.view.mas_right).with.offset(-padding.right)
+    }
   end
-
-  def nav_left_button
-    mp 'Left button'
-  end
-
-  def nav_right_button
-    mp 'Right button'
-  end
-
-  # You don't have to reapply styles to all UIViews, if you want to optimize, another way to do it
-  # is tag the views you need to restyle in your stylesheet, then only reapply the tagged views, like so:
-  #   def logo(st)
-  #     st.frame = {t: 10, w: 200, h: 96}
-  #     st.centered = :horizontal
-  #     st.image = image.resource('logo')
-  #     st.tag(:reapply_style)
-  #   end
-  #
-  # Then in will_animate_rotate
-  #   find(:reapply_style).reapply_styles#
 
   # Remove the following if you're only using portrait
   def will_animate_rotate(orientation, duration)

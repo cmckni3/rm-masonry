@@ -13,6 +13,7 @@ module RMMasonry
     self.mas_lessThanOrEqualTo.call(view)
   end
 
+  # Fix missing macro
   def mas_offset(view)
     self.offset = view
   end

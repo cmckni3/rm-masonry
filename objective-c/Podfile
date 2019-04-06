@@ -1,0 +1,21 @@
+platform :ios, '9.0'
+
+pod 'Masonry'
+
+target 'RM Masonry' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for RM Masonry
+
+  target 'RM MasonryTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'RM MasonryUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
